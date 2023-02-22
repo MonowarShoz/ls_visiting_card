@@ -1,0 +1,74 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:5710923100111357117",
+      "lastPropertyId": "4:3447261931277552546",
+      "name": "CardModel",
+      "properties": [
+        {
+          "id": "1:5201712115820065915",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2635270677597839733",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "3:270630522734884246",
+          "name": "image",
+          "type": 9
+        },
+        {
+          "id": "4:3447261931277552546",
+          "name": "groupId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:2800924394982974337",
+          "relationTarget": "Group"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:3571238245639622754",
+      "lastPropertyId": "3:5611401430110149955",
+      "name": "Group",
+      "properties": [
+        {
+          "id": "1:6314919171983341212",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4363767192553921158",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:5611401430110149955",
+          "name": "category",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:3571238245639622754",
+  "lastIndexId": "1:2800924394982974337",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
