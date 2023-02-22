@@ -54,7 +54,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(2, 3571238245639622754),
       name: 'Group',
-      lastPropertyId: const IdUid(3, 5611401430110149955),
+      lastPropertyId: const IdUid(4, 857274811605351251),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -71,6 +71,11 @@ final _entities = <ModelEntity>[
             id: const IdUid(3, 5611401430110149955),
             name: 'category',
             type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 857274811605351251),
+            name: 'color',
+            type: 6,
             flags: 0)
       ],
       relations: <ModelRelation>[],
@@ -162,10 +167,11 @@ ModelDefinition getObjectBoxModel() {
         objectToFB: (Group object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
           final categoryOffset = fbb.writeString(object.category);
-          fbb.startTable(4);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, nameOffset);
           fbb.addOffset(2, categoryOffset);
+          fbb.addInt64(3, object.color);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -177,7 +183,9 @@ ModelDefinition getObjectBoxModel() {
               name: const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 6, ''),
               category: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 8, ''))
+                  .vTableGet(buffer, rootOffset, 8, ''),
+              color:
+                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0))
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           InternalToManyAccess.setRelInfo(
               object.cards,
@@ -221,4 +229,7 @@ class Group_ {
   /// see [Group.category]
   static final category =
       QueryStringProperty<Group>(_entities[1].properties[2]);
+
+  /// see [Group.color]
+  static final color = QueryIntegerProperty<Group>(_entities[1].properties[3]);
 }

@@ -10,9 +10,9 @@ class AddGroupScreen extends StatefulWidget {
 }
 
 class _AddGroupScreenState extends State<AddGroupScreen> {
- // Color selectedColor = Colors.primaries.first;
+  Color selectedColor = Colors.primaries.first;
   final textController = TextEditingController();
-   final textController2 = TextEditingController();
+  final textController2 = TextEditingController();
   String? errorMessage;
 
   void _onSave() {
@@ -28,7 +28,7 @@ class _AddGroupScreenState extends State<AddGroupScreen> {
         errorMessage = null;
       });
     }
-    final result = Group(name: name, category: category);
+    final result = Group(name: name, category: category, color: selectedColor.value);
     Navigator.of(context).pop(result);
   }
 
@@ -51,19 +51,15 @@ class _AddGroupScreenState extends State<AddGroupScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: TextField(
                         controller: textController2,
-                        
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                        decoration:  InputDecoration(
+                        style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
                           hintText: 'Group category',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(23)
-                          ),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(23)),
                         ),
                       ),
                     ),
@@ -72,17 +68,14 @@ class _AddGroupScreenState extends State<AddGroupScreen> {
                     //   size: 60,
                     // ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 10),
+                      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10),
                       child: TextField(
                         controller: textController,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                        decoration:  InputDecoration(
+                        style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
                           hintText: 'Group name',
-                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(23)
-                          ),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(23)),
                         ),
                       ),
                     ),
@@ -108,40 +101,38 @@ class _AddGroupScreenState extends State<AddGroupScreen> {
                         ),
                       ),
                     ),
-                    // const Padding(
-                    //   padding: EdgeInsets.symmetric(
-                    //     horizontal: 20,
-                    //     vertical: 15,
-                    //   ),
-                    //   child: Text('SELECT COLOR'),
-                    // ),
-                    // Expanded(
-                    //   child: GridView.builder(
-                    //     scrollDirection: Axis.horizontal,
-                    //     gridDelegate:
-                    //         const SliverGridDelegateWithFixedCrossAxisCount(
-                    //       crossAxisCount: 2,
-                    //     ),
-                    //     itemCount: Colors.primaries.length,
-                    //     itemBuilder: (context, index) {
-                    //       final color = Colors.primaries[index];
-                    //       return Padding(
-                    //         padding: const EdgeInsets.symmetric(
-                    //             horizontal: 15.0, vertical: 5),
-                    //         child: InkWell(
-                    //           onTap: () {
-                    //             // setState(() {
-                    //             //   selectedColor = color;
-                    //             // });
-                    //           },
-                    //           child: CircleAvatar(
-                    //             backgroundColor: color,
-                    //           ),
-                    //         ),
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 15,
+                      ),
+                      child: Text('SELECT COLOR'),
+                    ),
+                    Expanded(
+                      child: GridView.builder(
+                        scrollDirection: Axis.horizontal,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemCount: Colors.primaries.length,
+                        itemBuilder: (context, index) {
+                          final color = Colors.primaries[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5),
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  selectedColor = color;
+                                });
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: color,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,

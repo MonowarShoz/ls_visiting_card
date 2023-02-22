@@ -69,6 +69,7 @@ class _GroupScreenState extends State<GroupScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TODO List'),
+        backgroundColor: Colors.teal,
       ),
       body: _groups.isEmpty
           ? const Center(
@@ -115,7 +116,7 @@ class _GroupItem extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 180, 70, 70),
+            color: Color(group.color),
             borderRadius: const BorderRadius.all(Radius.circular(15)),
           ),
           child: Column(
@@ -124,7 +125,7 @@ class _GroupItem extends StatelessWidget {
               Text(
                 group.name,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 22,
                 ),
               ),
@@ -132,7 +133,7 @@ class _GroupItem extends StatelessWidget {
               Text(
                 group.category,
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 17,
                 ),
               ),
